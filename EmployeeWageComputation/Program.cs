@@ -6,10 +6,12 @@ namespace EmployeeWageComputation
     public class Program
     {
         //constants
-        const int EMP_PER_HRS = 20;
         const int IS_FULL_TIME = 1;
         const int IS_PART_TIME = 2;
-        const int WORKING_DAYS = 20;
+        const int EMP_PER_HRS = 20;
+        const int MAX_WORKING_DAYS = 20;
+        const int MAX_HRS_IN_MONTH = 100;
+
         static void Main(string[] args)
         {
             //local variables
@@ -17,12 +19,12 @@ namespace EmployeeWageComputation
             int empWage = 0;
             int day = 1;
             int totalEmpWage = 0;
+            int totalEmpHrs = 0;
             Console.WriteLine("Welcome to the Employee Wage Computation");
 
-            //UC5- Calculating Wages  for a Month
-
+            //UC6- Calculating total Employee Wage when assume 100 hours and 20 days
             Random random = new Random();
-            for (day = 1; day <= WORKING_DAYS; day++)
+            while (day <= MAX_WORKING_DAYS && totalEmpHrs <= MAX_HRS_IN_MONTH)
             {
                 int empAttendence = random.Next(0, 3);//0,1,2
                 switch (empAttendence)
@@ -42,9 +44,11 @@ namespace EmployeeWageComputation
                 }
                 empWage = empHrs * EMP_PER_HRS;
                 totalEmpWage = totalEmpWage + empWage;
-                Console.WriteLine("Day{0} Employee Wage is {1} ", day, empWage);
+                Console.WriteLine("Day{0} Employee Wage is {1} and totalHrs: {2} ", day, empWage, totalEmpHrs);
+                day++;
+                totalEmpHrs = totalEmpHrs + empHrs;
             }
-            Console.WriteLine("\nTotal Employee Wages for {0} days is {1} ", (day - 1), totalEmpWage);
+            Console.WriteLine("\nTotal Employee Wage for {0} days: {1} and totalHrs: {2} ", (day - 1), totalEmpWage, totalEmpHrs);
             Console.ReadLine();
         }
     }
