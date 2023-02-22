@@ -6,13 +6,13 @@ namespace EmployeeWageComputation
     public class Program
     {
         //constants
-        const int IS_FULL_TIME = 1;
-        const int IS_PART_TIME = 2;
-        const int EMP_PER_HRS = 20;
-        const int MAX_WORKING_DAYS = 20;
-        const int MAX_HRS_IN_MONTH = 100;
+        public const int IS_FULL_TIME = 1;
+        public const int IS_PART_TIME = 2;
+        public const int EMP_PER_HRS = 20;
+        public const int MAX_WORKING_DAYS = 20;
+        public const int MAX_HRS_IN_MONTH = 100;
 
-        static void Main(string[] args)
+        public static void ComputeEmpWage()
         {
             //local variables
             int empHrs = 0;
@@ -22,7 +22,7 @@ namespace EmployeeWageComputation
             int totalEmpHrs = 0;
             Console.WriteLine("Welcome to the Employee Wage Computation");
 
-            //UC6- Calculating total Employee Wage when assume 100 hours and 20 days
+            //UC7- Compute Employee Wage Using Class Methods
             Random random = new Random();
             while (day <= MAX_WORKING_DAYS && totalEmpHrs <= MAX_HRS_IN_MONTH)
             {
@@ -50,6 +50,10 @@ namespace EmployeeWageComputation
             }
             Console.WriteLine("\nTotal Employee Wage for {0} days: {1} and totalHrs: {2} ", (day - 1), totalEmpWage, totalEmpHrs);
             Console.ReadLine();
+        }
+        static void Main(string[] args)
+        {
+            ComputeEmpWage();
         }
     }
 }
